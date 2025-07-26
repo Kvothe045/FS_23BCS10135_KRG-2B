@@ -1,0 +1,7 @@
+# NAME: ARYAN SRIVASTAV  
+**GRP:** KRG 2-B (group-4)  
+**UID:** 23BCS10135  
+
+---
+
+## FULL STACK ASSIGNMENT
