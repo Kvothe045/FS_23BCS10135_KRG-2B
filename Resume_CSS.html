@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FS ASSIGNMENT - Aryan Prakash Srivastav</title>
+  <style>
+    /* --- General Body and Layout --- */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px 40px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- Header --- */
+    header {
+      text-align: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    header h1 {
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    header h4 {
+      margin: 0;
+      font-weight: normal;
+      color: #7f8c8d;
+    }
+    header hr {
+      display: none; /* Replaced with a styled border-bottom */
+    }
+
+    /* --- Sections --- */
+    section {
+      padding: 20px 0;
+      border-bottom: 1px solid #eaeaea;
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    section h1 {
+      color: #3498db;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    /* --- Profile (About + Image) Side-by-Side Layout --- */
+    .profile-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .profile-container .about-section {
+      flex: 1; /* Allows the about section to take up available space */
+    }
+    .profile-container .image-section img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Prevents image stretching */
+      border: 5px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* --- Links, Lists, and Tables --- */
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* --- Form Styling --- */
+    form label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+    input[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+    .contact-section hr {
+      display: none;
+    }
+    
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Aryan Prakash Srivastav(UID: 23BCS10135)</h1>
+      <h4>B.E. CSE Student | Chandigarh University</h4>
+      <hr/>
+    </header>
+    
+    <main>
+      <div class="profile-container">
+        <section class="about-section">
+          <h1>About Me</h1>
+          <p>
+            Hi! I am Aryan Srivastav, currently pursuing a Bachelor's degree in Computer Science and Engineering at Chandigarh University, Punjab. I am interested in programming, web development, and learning new technologies. I enjoy building projects and collaborating with teams.
+          </p>
+          <ul>
+            <li>Location: Varanasi, India</li>
+            <li>Email: aryan45srivastav@gmail.com</li>
+            <li>Phone: +91-9795471231</li>
+            <li>
+              <a href="https://www.linkedin.com/in/aryan-srivastav-550931200" target="_blank">LinkedIn</a> |
+              <a href="https://github.com/kvothe045" target="_blank">GitHub</a>
+            </li>
+          </ul>
+        </section>
+        
+        <section class="image-section">
+          <img src="./pfp.png" alt="Profile Image"/>
+        </section>
+      </div>
+
+      <section>
+        <h1>Skills</h1>
+        <ul>
+          <li>C++</li>
+          <li>Python</li>
+          <li>Solidity</li>
+          <li>JAVA</li>
+          <li>Django</li>
+          <li>FastAPI</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h1>Education</h1>
+        <table border="1px">
+          <tr>
+            <th>Degree/Certificate</th>
+            <th>Institute/Board</th>
+            <th>Year</th>
+            <th>CGPA/Percentage</th>
+          </tr>
+          <tr>
+            <td>B.E., CSE</td>
+            <td>Chandigarh University, Punjab</td>
+            <td>2023 - Present</td>
+            <td>8.48</td>
+          </tr>
+          <tr>
+            <td>Intermediate</td>
+            <td>CBSE</td>
+            <td>2022</td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>Matriculation</td>
+            <td>CBSE</td>
+            <td>2020</td>
+            <td>91%</td>
+          </tr>
+        </table>
+      </section>
+      
+      <section>
+        <h1>Experience</h1>
+        <ul>
+          <li>
+            <strong>Boulevard (Trikon Ecosystem)</strong><br/>
+            Web 3.0 Developer (Dec 2024 - Jan 2025)
+            <ul>
+              <li>Contributed to a startup collaborating with the Trikon Ecosystem.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      
+      <section>
+        <h1>Projects</h1>
+        <ol>
+          <li>
+            <strong>VOCA: AI-based Soft-Skills Enhancer (July 2024 - Feb 2025)</strong>
+            <ul>
+              <li>Tools: Python, Django, HuggingFace, PostgreSQL, REST API, React</li>
+              <li>Developed a platform to help people improve soft skills.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+      
+      <section class="contact-section">
+        <h1>Contact</h1>
+        <form action="#">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name"/>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email"/>
+          <label for="feedback">Enter your feedback here</label>
+          <textarea name="feedback" id="feedback" rows="8" cols="35"></textarea>
+          <input type="submit" value="Submit"/>
+        </form>
+        <hr/>
+      </section>
+    </main>
+    
+    <footer>
+      <p>All rights reserved &copy; 23BCS10135.</p>
+    </footer>
+  </div>
+</body>
+</html>
