@@ -1,3 +1,4 @@
+// fsproject/app/dashboard/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -59,7 +60,7 @@ export default function DashboardPage() {
   const fetchFiles = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/files/user/${user?.userId}`);
+      const response = await fetch(`https://api-backend-spring.onrender.com/api/files/user/${user?.userId}`);
       if (response.ok) {
         const data = await response.json();
         setFiles(data);
@@ -73,7 +74,7 @@ export default function DashboardPage() {
 
   const fetchSharedFiles = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/files/shared/${user?.userId}`);
+      const response = await fetch(`https://api-backend-spring.onrender.com/api/files/shared/${user?.userId}`);
       if (response.ok) {
         const data = await response.json();
         setSharedFiles(data);
@@ -87,7 +88,7 @@ export default function DashboardPage() {
     setUploading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/files/upload', {
+      const response = await fetch('https://api-backend-spring.onrender.com/api/files/upload', {
         method: 'POST',
         body: formData,
       });
@@ -108,7 +109,7 @@ export default function DashboardPage() {
   const handleDelete = async (fileId: number) => {
     if (!confirm('Are you sure you want to delete this file?')) return;
     try {
-      const response = await fetch(`http://localhost:8080/api/files/${fileId}`, {
+      const response = await fetch(`https://api-backend-spring.onrender.com/api/files/${fileId}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -133,18 +134,18 @@ export default function DashboardPage() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <header className="bg-white border-b border-gray-200">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <header className="bg-gray-900/50 backdrop-blur-xl border-b border-gray-700/50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              CloudShare
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+              VaultShare
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-gray-700">Welcome, <strong>{user.username}</strong></span>
+              <span className="text-gray-300">Welcome, <strong className="text-cyan-400">{user.username}</strong></span>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                className="flex items-center gap-2 px-4 py-2 text-red-400 hover:bg-red-500/10 rounded-lg transition border border-red-500/20 hover:border-red-500/40"
               >
                 <LogOut className="w-4 h-4" />
                 Logout
@@ -155,28 +156,28 @@ export default function DashboardPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-4 mb-8">
+        <div className="flex gap-4 mb-8 flex-wrap">
           <button onClick={() => setActiveTab('files')}
-            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'files' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>My Files</button>
+            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'files' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'}`}>My Files</button>
           <button onClick={() => setActiveTab('upload')}
-            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'upload' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>Upload File</button>
+            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'upload' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'}`}>Upload File</button>
           <button onClick={() => setActiveTab('share')}
-            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'share' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>Share File</button>
+            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'share' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'}`}>Share File</button>
           <button onClick={() => setActiveTab('sharedwithme')}
-            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'sharedwithme' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>Shared With Me</button>
+            className={`px-6 py-3 rounded-lg font-semibold transition ${activeTab === 'sharedwithme' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'}`}>Shared With Me</button>
         </div>
 
         {/* Upload tab */}
         {activeTab === 'upload' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Upload New File</h2>
+          <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-cyan-500/10 p-8 max-w-2xl mx-auto border border-gray-700/50">
+            <h2 className="text-2xl font-bold mb-6 text-white">Upload New File</h2>
             <form onSubmit={handleFileUpload} className="space-y-6">
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition">
-                <Upload className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-                <input type="file" name="file" required className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg" />
+              <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-cyan-500 transition bg-gray-900/30">
+                <Upload className="w-12 h-12 mx-auto text-cyan-400 mb-4" />
+                <input type="file" name="file" required className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-cyan-500 file:text-white file:font-semibold hover:file:bg-cyan-600 file:transition" />
               </div>
               <input type="hidden" name="userId" value={user.userId} />
-              <button type="submit" disabled={uploading} className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50">
+              <button type="submit" disabled={uploading} className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition disabled:opacity-50 shadow-lg shadow-cyan-500/50">
                 {uploading ? 'Uploading...' : 'Upload File'}
               </button>
             </form>
@@ -185,32 +186,32 @@ export default function DashboardPage() {
 
         {/* Files tab */}
         {activeTab === 'files' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-6">My Files ({files.length})</h2>
+          <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-cyan-500/10 p-8 border border-gray-700/50">
+            <h2 className="text-2xl font-bold mb-6 text-white">My Files ({files.length})</h2>
             {loading ? (
-              <p className="text-center text-gray-500 py-8">Loading files...</p>
+              <p className="text-center text-gray-400 py-8">Loading files...</p>
             ) : files.length === 0 ? (
-              <p className="text-center text-gray-500 py-8">No files uploaded yet</p>
+              <p className="text-center text-gray-400 py-8">No files uploaded yet</p>
             ) : (
               <div className="grid gap-4">
                 {files.map((file) => (
-                  <div key={file.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+                  <div key={file.id} className="flex items-center justify-between p-4 border border-gray-700 bg-gray-900/40 rounded-lg hover:shadow-md hover:shadow-cyan-500/20 hover:border-cyan-500/50 transition">
                     <div className="flex items-center gap-4">
-                      <FileText className="w-8 h-8 text-blue-600" />
+                      <FileText className="w-8 h-8 text-cyan-400" />
                       <div>
-                        <h3 className="font-semibold">{file.fileName}</h3>
-                        <p className="text-sm text-gray-500">
+                        <h3 className="font-semibold text-white">{file.fileName}</h3>
+                        <p className="text-sm text-gray-400">
                           {formatFileSize(file.fileSize)} • {new Date(file.uploadedAt).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <a href={file.cloudinaryUrl} target="_blank" rel="noopener noreferrer"
-                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                        className="p-2 text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition border border-cyan-500/20 hover:border-cyan-500/40">
                         <Download className="w-5 h-5" />
                       </a>
                       <button onClick={() => handleDelete(file.id)}
-                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition">
+                        className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition border border-red-500/20 hover:border-red-500/40">
                         <Trash2 className="w-5 h-5" />
                       </button>
                     </div>
@@ -228,39 +229,39 @@ export default function DashboardPage() {
 
         {/* Shared with me tab */}
         {activeTab === 'sharedwithme' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Eye className="w-6 h-6 text-purple-600" /> Files Shared With Me ({sharedFiles.length})
+          <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-purple-500/10 p-8 border border-gray-700/50">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-white">
+              <Eye className="w-6 h-6 text-purple-400" /> Files Shared With Me ({sharedFiles.length})
             </h2>
             {sharedFiles.length === 0 ? (
-              <div className="text-center text-gray-500">No files shared with you yet.</div>
+              <div className="text-center text-gray-400">No files shared with you yet.</div>
             ) : (
               <div className="grid gap-4">
                 {sharedFiles.map((file) => (
-                  <div key={file.shareId} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+                  <div key={file.shareId} className="flex items-center justify-between p-4 border border-gray-700 bg-gray-900/40 rounded-lg hover:shadow-md hover:shadow-purple-500/20 hover:border-purple-500/50 transition">
                     <div className="flex items-center gap-4">
-                      <FileText className="w-8 h-8 text-purple-600" />
+                      <FileText className="w-8 h-8 text-purple-400" />
                       <div>
-                        <h3 className="font-semibold">{file.fileName}</h3>
-                        <p className="text-sm text-gray-500">
-                          {formatFileSize(file.fileSize)} • Shared by <b>{file.sharedByUsername}</b>
+                        <h3 className="font-semibold text-white">{file.fileName}</h3>
+                        <p className="text-sm text-gray-400">
+                          {formatFileSize(file.fileSize)} • Shared by <b className="text-purple-400">{file.sharedByUsername}</b>
                         </p>
-                        <p className="text-xs text-gray-400">Shared on: {new Date(file.sharedAt).toLocaleString()}</p>
+                        <p className="text-xs text-gray-500">Shared on: {new Date(file.sharedAt).toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <a href={file.cloudinaryUrl} target="_blank" rel="noopener noreferrer"
-                        className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition">
+                        className="p-2 text-green-400 hover:bg-green-500/10 rounded-lg transition border border-green-500/20 hover:border-green-500/40">
                         <Download className="w-5 h-5" />
                       </a>
                       <button
                         onClick={async () => {
                           if (confirm("Remove this shared file?")) {
-                            await fetch(`http://localhost:8080/api/files/share/${file.shareId}`, { method: "DELETE" });
+                            await fetch(`https://api-backend-spring.onrender.com/api/files/share/${file.shareId}`, { method: "DELETE" });
                             await fetchSharedFiles();
                           }
                         }}
-                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                        className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition border border-red-500/20 hover:border-red-500/40"
                       >
                         <XCircle className="w-5 h-5" />
                       </button>
@@ -287,7 +288,7 @@ function ShareFileComponent({ userId, files, afterShare }: { userId: number; fil
   useEffect(() => { fetchUsers(); }, []);
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/user/all');
+      const response = await fetch('https://api-backend-spring.onrender.com/api/user/all');
       if (response.ok) {
         const data = await response.json();
         setUsers(data.filter((u: any) => u.id !== userId));
@@ -302,7 +303,7 @@ function ShareFileComponent({ userId, files, afterShare }: { userId: number; fil
     }
     setResult('');
     try {
-      const resp = await fetch('http://localhost:8080/api/files/share', {
+      const resp = await fetch('https://api-backend-spring.onrender.com/api/files/share', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -325,17 +326,17 @@ function ShareFileComponent({ userId, files, afterShare }: { userId: number; fil
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-        <Share2 className="w-6 h-6" />
+    <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl shadow-2xl shadow-cyan-500/10 p-8 max-w-2xl mx-auto border border-gray-700/50">
+      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-white">
+        <Share2 className="w-6 h-6 text-cyan-400" />
         Share File
       </h2>
-      {result && <div className="mb-4 text-center text-green-600 font-semibold">{result}</div>}
+      {result && <div className={`mb-4 text-center font-semibold ${result.includes('success') ? 'text-green-400' : 'text-red-400'}`}>{result}</div>}
       <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select User</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Select User</label>
           <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+            className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
             <option value="">Choose a user...</option>
             {users.map((user) => (
               <option key={user.id} value={user.id}>{user.username} ({user.email})</option>
@@ -343,9 +344,9 @@ function ShareFileComponent({ userId, files, afterShare }: { userId: number; fil
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select File</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Select File</label>
           <select value={selectedFile} onChange={(e) => setSelectedFile(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+            className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
             <option value="">Choose a file...</option>
             {files.map((file) => (
               <option key={file.id} value={file.id}>{file.fileName}</option>
@@ -353,16 +354,16 @@ function ShareFileComponent({ userId, files, afterShare }: { userId: number; fil
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Access Level</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Access Level</label>
           <select value={accessLevel} onChange={e => setAccessLevel(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+            className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
             <option value="VIEW">View Only</option>
             <option value="DOWNLOAD">Download</option>
           </select>
         </div>
         <button
           onClick={handleShare}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+          className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition shadow-lg shadow-cyan-500/50"
         >Share File</button>
       </div>
     </div>
