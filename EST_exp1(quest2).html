@@ -1,0 +1,46 @@
+<!-- responsive registration form using html and veryminimal simple inline css, include fields: name, email, password. center the form on the page amd style the 
+ regiter button with hover effect -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+</head>
+
+<body style="margin:0; font-family:Arial; background:#aad2df; display:flex; justify-content:center; align-items:center; height:100vh;">
+
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    
+    <h1 style="color:#333; margin-bottom:20px; text-align:center;">
+      Full Stack EST PRACTICAL
+    </h1>
+
+    <form style="background:#fff; padding:25px; width:90%; max-width:350px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+      <h2 style="text-align:center; margin-bottom:20px;">Register</h2>
+
+      <label>Name</label><br>
+      <input type="text" style="width:90%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+      <label>Email</label><br>
+      <input type="email" style="width:90%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+      <label>Password</label><br>
+      <input type="password" style="width:90%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:5px;"><br>
+
+      <button 
+        style="width:100%; padding:12px; background:#007bff; color:#fff; border:none; border-radius:5px; cursor:pointer; transition:0.3s; box-shadow:0 0 0 rgba(0,0,0,0);"
+        onmouseover="this.style.background='#28a745'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 5px 12px rgba(0,0,0,0.2)'"
+        onmouseout="this.style.background='#007bff'; this.style.transform='scale(1)'; this.style.boxShadow='0 0 0 rgba(0,0,0,0)'"
+        >
+        Register
+    </button>
+
+
+
+    </form>
+
+  </div>
+
+</body>
+</html>
